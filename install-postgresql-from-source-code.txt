@@ -1,0 +1,15 @@
+Install PostgreSQL from Source
+zergl<e3.gemini#qq.com>
+2015/02/08
+
+wget https://ftp.postgresql.org/pub/source/v9.4.1/postgresql-9.4.1.tar.bz2
+tar jxvf postgresql-9.4.1.tar.bz2 
+cd postgresql-9.4.1/
+./configure --prefix=/home/zergl/workspace/db/postgresql/installbin/
+make
+make install
+/home/zergl/workspace/db/postgresql/installbin/bin/postgres -D /home/zergl/workspace/db/postgresql/data/ >logfile 2>&1 &
+/home/zergl/workspace/db/postgresql/installbin/bin/createdb testdb
+/home/zergl/workspace/db/postgresql/installbin/bin/psql testdb
+
+
