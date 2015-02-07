@@ -1,0 +1,28 @@
+
+http://blog.chinaunix.net/uid-20457792-id-1944505.html
+
+TCP连接断开过程的四步骤：
+（1）MSL -- Maximum Segment Lifetime, TCP分节报文最长生命周期，也就是IP数据包能在网络上存活的最长时间。任何一个系统中的TCP实现都必须设定一个MSL值。RFC 1122中的建议值是120秒。BSD和Linux一般使用的是30秒 --- CentOS 5.3中是30秒。
+
+TIME_WAIT状态要维持2MSL秒，也就是说一般TIME_WAIT状态的延时在1~4分钟。
+
+（2）TIME_WAIT状态存在的两个理由
+
+(a) 可靠地实现TCP全双工链接的终止。
+主要是考虑第四步的ACK丢失的情况。若ACK丢失，则被动关闭端再次发送FIN，即第三步。ACK在网络上经过MSL秒后未到达主动关闭端，在网络上消逝了。被动关闭端在2MSL时间内未收到ACK回应，则重传FIN。
+
+(b) 允许旧的重复分节在网络中消逝。
+这个很好理解，旧的TCP连接介于A[ip1:port1]和B[ip2:port2]之间。某TCP报文S在被A发送后正在网络中前往B。若在次过程该TCP连接关闭了，且在S到达B之前，A、B之间又被重新利用，重新建立起一条TCP链接。然后报文S打到B，以为是原先TCP连接的B端。这样问题就出现了。
+
+现在设置了TIME_WAIT状态的维持时间为2MSL，则可保证在某一方向上的TCP报文(旧的)在MSL秒后消逝；且另一个方向上的应答报文也在MSL秒后消逝。这样就可以保证属于旧连接的报文在新连接建立之前已经在网络上消逝了，即旧报文不会影响新连接。
+
+（3）内核微调
+修改/etc/sysctl,然后运行 # sysctl -p使之立即生效。
+
+#重用time_wait的值
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_tw_recycle = 1
+net.ipv4.netfilter.ip_conntrack_tcp_timeout_time_wait = 120	# 2分钟
+net.ipv4.netfilter.ip_conntrack_tcp_timeout_close_wait = 60
+net.ipv4.netfilter.ip_conntrack_tcp_timeout_fin_wait = 120
+

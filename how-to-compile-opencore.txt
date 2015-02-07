@@ -1,0 +1,188 @@
+[翻译]OpenCORE编译指导
+http://blog.chinaunix.net/uid-20457792-id-1944515.html
+翻译：lyi#0x55.cn (2010-06-03)
+
+Q. How to build OpenCORE outside of Android?
+
+A. As part of the OpenCORE release, PacketVideo also provides it's internal
+
+build system that can be used to build OpenCORE outside of Android with the
+
+native linux toolchain. 
+
+The following are the steps involved:
+
+  NOTE 1: Assume <opencore> is the directory where you have downloaded the
+
+  OpenCORE codebase
+
+  NOTE 2: The setup scripts are meant to be used in with the bash shell.
+
+    cd <opencore>/build_config/opencore_dynamic
+
+    source setup.sh <opencore>
+
+make -j
+
+This will build all the required libraries in
+
+    <opencore>/build_config/opencore_dynamic/build/installed_lib/linux
+
+and the executables in 
+
+<opencore>/build_config/opencore_dynamic/build/bin/linux
+
+【问】怎么在Android系统之外编译OpenCORE？
+
+【答】作为OpenCORE的一部分，PacketVideo公司提供了在Android系统之外、使用本地Linux工具链编译OpenCORE的内部编译机制。
+
+下面是涉及到的几个步骤：
+
+注1：<opencore>是OpenCORE代码目录
+
+注2：配置脚本
+
+$ cd <opencore>/build_config/opencore_dynamic
+
+$ source setup.sh <opencore>
+
+$ make -j
+
+这一步会编译出所有依赖的库以及相关的可执行文件，其中库文件存放于目录：
+
+<opencore>/build_config/opencore_dynamic/build/installed_lib/linux
+
+可执行文件存放于：
+
+<opencore>/build_config/opencore_dynamic/build/bin/linux
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Q. How to build OpenCORE unit tests for Android emulator/device?
+
+A. export BUILD_PV_TEST_APPS=1 before building the SDK.
+
+【问】怎么为Android模拟器或设备编译OpenCORE单元测试程序？
+
+【答】在编译SDK之前设置BUILD_PV_TEST_APPS变量：
+
+$ export BUILD_PV_TEST_APPS=1
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Q. How to run the pvplayer engine unit tests?
+
+A. On Android emulator/device:
+
+    adb push <opencore>/engines/player/test/data/ /sdcard
+
+    adb shell "cd /sdcard; pvplayer_engine_test <test_args> <source_args>"
+
+On host PC:
+
+    cd <opencore>/build_config/opencore_dynamic
+
+    make run_pe_test TEST_ARGS="<test_args>"
+
+To see a list of valid <test_args>:
+
+    make run_pe_test TEST_ARGS="-help"
+
+【问】怎么运行pvplayer引擎的单元测试程序？
+
+【答】在Android模拟器或设备上：
+
+$ adb push <opencore>/engines/player/test/data/  /sdcard
+
+$ adb shell "cd /sdcard; pvplayer_engine_test <test_args> <source_args>"
+
+在本地主机上：
+
+$ cd <opencore>/build_config/opencore_dynamic
+
+$ make run_pe_test TEST_ARGS="<test_args>"
+
+可运行下列命令查看可用的<test_args>：
+
+$ make run_pe_test TEST_ARGS="-help"
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Q. How to build 2way for Android emulator/device?
+
+A. export BUILD_PV_2WAY=1 before building the SDK.
+
+【问】怎么给模拟器或设备编译支持视频电话功能(2way)？
+
+【答】在编译SDK前设置好BUILD_PV_2WAY变量：
+
+$ export BUILD_PV_2WAY=1
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Q. How to run the 2way engine unit tests?
+
+A. On Android emulator/device:
+
+    adb push <opencore>/engines/2way/sample_app/data/ /sdcard
+
+    adb shell "cd /sdcard; pv2way_engine_test <test_args>"
+
+On host PC:
+
+    cd <opencore>/build_config/opencore_dynamic
+
+    make run_2way_test TEST_ARGS="<test_args>"
+
+To see a list of valid <test_args>:
+
+    make run_2way_test TEST_ARGS="-help"
+
+【问】怎么运行2way引擎的单元测试程序？
+
+【答】在android模拟器或设备上运行：
+
+$ adb push <opencore>/engines/2way/sample_app/data/ /sdcard
+
+$ adb shell "cd /sdcard; pv2way_engine_test <test_args>"
+
+在本地主机上：
+
+$ cd <opencore>/build_config/opencore_dynamic
+
+$ make run_2way_test TEST_ARGS="<test_args>"
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Q. How to run the pvauthor engine unit tests?
+
+A.  On Android emulator/device:
+
+    adb push <opencore>/engines/author/test/test_input/ /sdcard
+
+    adb shell "cd /sdcard;test_pvauthorengine <test_args>"
+
+On host PC:
+
+    cd <opencore>/build_config/opencore_dynamic
+
+    make run_ae_test TEST_ARGS="<test_args>"
+
+To see a list of valid <test_args>:
+
+    make run_ae_test TEST_ARGS="-help"
+
+【问】怎么运行pvauthor引擎的单元测试程序？ 
+
+【答】在android模拟器或设备上：
+
+$ adb push <opencore>/engines/author/test/test_input/ /sdcard
+
+$ adb shell "cd /sdcard; test_pvauthorengine <test_args>"
+
+在本地主机上：
+
+$ cd <opencore>/build_config/opencore_dynamic
+
+$ make run_ae_test TEST_ARGS="<test_args>"
+

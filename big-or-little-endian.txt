@@ -1,0 +1,11 @@
+判断cpu是大端还是小端
+2010-06-04
+
+origin link:http://blog.chinaunix.net/uid-20457792-id-1944518.html
+
+<code>
+bool is_big;
+unsigned int test = 1;
+is_big = (*((byte *)(&test))) ? false : true;
+</code>
+

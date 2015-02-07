@@ -1,0 +1,55 @@
+http://blog.chinaunix.net/uid-20457792-id-1944512.html
+2010-04-29
+-----------------------
+使用ant编译android程序
+
+我的 http://0x55.cn/log/index.php/archives/3/
+
+机子很破，eclipse运行起来有些力不从心，况且还要开模拟器，不堪重负…网上找到的算是apache-ant比较好使.
+
+let's go!
+
+假设你已经有：
+  (a)java环境
+  (b)android-sdk环境
+
+[1]设置ant环境
+去http://ant.apache.org/bindownload.cgi下载最新版本（当前为apache-ant-1.8.0），二进制的就好！例如：apache-ant-1.8.0-bin.zip
+
+$ unzip apache-ant-1.8.0-bin.zip
+
+解开后为apache-ant-1.8.0,假如全路径为/home/tools/apache-ant-1.8.0
+
+设置ant环境变量：
+
+$ export ANT_HOME="/home/tools/apache-ant-1.8.0"
+$ export PATH="${PATH}:${ANT_HOME}/bin"
+
+若相关环境都已设置正确，运行ant会有如下提示：
+$ ant
+Buildfile: build.xml does not exist!
+Build failed
+
+
+[2]编译android项目
+
+命令行下创建一个android项目：
+$ android create project -n ANtTest -t android-7 -p /home/android/workspace/AntTest -k com.xdu.example.AntTest -a AntTest
+
+这一步会生成android项目相关的build.xml,此时可编译android项目！
+
+ps:
+  直接运行android create project可见相关选项。
+
+$ cd /home/android/workspace/AntTest
+$ ant debug
+
+这一步会生成一个bin目录，里边就是生成的apk等相关文件。
+
+安装到emulator:
+$ ant install
+
+ps：
+   tip1: 在某个project目录下直接运行ant，可显示相关操作选项！
+   tip2：运行ant --help可见更详细帮助信息！
+   
