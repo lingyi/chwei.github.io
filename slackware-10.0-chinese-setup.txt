@@ -4,15 +4,10 @@ Slackware 10.0中文环境配置详细介绍
 http://tech.ccidnet.com/art/302/20070430/1074473_1.html
 
 ##########################################
-
 # @FILE: Slackware 10.0中文环境配置（笔记）
-
 # @DATE: 2007.04.29
-
 # @EDITOR: Vim(zhcon/text mode)
-
 # @AUTHOR: Linn
-
 ##########################################
 
 目录
@@ -23,6 +18,7 @@ http://tech.ccidnet.com/art/302/20070430/1074473_1.html
 ################################
 ***中文显示***
 #1.修改/etc/profile.d/lang.sh
+
 添加以下两行:
 export LANG=zh_CN.gbk
 export LANG=en_US.UTF-8
@@ -30,17 +26,20 @@ export LANG=en_US.UTF-8
 #2.添加字体
 #a 将字体复制到/usr/share/fonts/ (没有可新建;此目录可以是任意的)
 #b 修改 /etc/X11/xorg.conf:
+
 增加: FontPath "/usr/share/fonts"
 另外: Load "freetype"
 Load "type1"
 Load "xtt"
+
 有注释的要去掉#;没有的加上 .
 
 #c 运行: fc-cache -fv
-当然字体也可以放在系统自带字体的目录 下
+当然字体也可以放在系统自带字体的目录下
 命令 :locale -a 可查看系统存放字体的目录
 最后运行fc-cahce -fv即可.
 ##字体可从其他系统上得到.比如Ubuntu,Windows...(注意版权!!!)
+
 就这简单的几步,基本搞定中文显示问题.
 !!!相当棘手的一个中文支持问题就是挂载fat,ntfs等文件系统时的中文显示问题.以后再慢慢研究.!!!
 

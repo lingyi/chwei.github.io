@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+<h3>Modify resolution of Virtualbox Linuxmint</h3>
+<a href="https://zergl.github.io">zergl</a> 2015-02-08<br />
+-------------------------<br />
+By default, the resolution of guest OS, linuxmint 17.1, is 800*600. I would help after installing the additional support package based on path experiment:<br />
+<pre>
+# sh VBoxLinuxAdditions.run
+</pre>
+<br />
+But it didn't work this time. Got some tips from the internet, I have to build a new /etc/X11/xorg.conf manully. The configuration as followed could support 1024*768:
+<br />
+<pre>
+<code>
+Section "Monitor"
+Identifier "Monitor0"
+VendorName "Generic Vendor"
+ModelName "Generic Monitor"
+Option "DPMS"
+HorizSync 28-50
+VertRefresh 43-73
+EndSection
+
+Section "Device"
+Identifier "Videocard_01"
+VendorName "Videocard vendor"
+BoardName "Videocard_unknown"
+EndSection
+
+Section "Screen"
+Identifier "Screen0"
+Device "Videocard_01"
+Monitor "Monitor0"
+DefaultDepth 24
+SubSection "Display"
+Viewport 0 0
+Depth 24
+Modes "1024x768" "800x600"
+EndSubSection
+SubSection "Display"
+Viewport 0 0
+Depth 16
+Modes "1024x768" "800x600"
+EndSubSection
+SubSection "Display"
+Viewport 0 0
+Depth 8
+Modes "1024x768" "800x600"
+EndSubSection
+EndSection
+</pre>
