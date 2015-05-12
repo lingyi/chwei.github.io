@@ -1,38 +1,31 @@
+<!doctype html>
 <html>
     <head>
     <meta charset="UTF-8">
     <title>@zergl</title>
-    <style type="text/css">
-        a:link,a:visited {
-	        text-decoration:none;
-        }
-        a:hover {
-	        color: #F93;
-	        text-decoration:none;
-        }
-    </style>
-
-    <script lang="javascript">
-        function popup()
-        {
-            alert("hello world!");
-        }
-        
-    </script>
+    <link rel="stylesheet" id="admin-bar-css" href="./static/zergl.css" type="text/css" media="all">
     </head>
     
     <body>
-    <a href="https://github.com/zergl">@zergl</a> <input type="button" onclick="popup()" value="click me">
-    
-    <br /><br />
-	<!-- articles here -->
-	[2007-05-08] <a href="slackware-10.0-chinese-setup.txt">Slackware 10.0中文环境配置详细介绍</a></br />
-	[2010-01-23] <a href="tcp_close_routine.txt">tcp断开过程</a><br />
-	[2010-04-29] <a href="build-android-apk-with-ant.txt">使用ant编译android程序</a><br />
-	[2010-06-04] <a href="how-to-compile-opencore.txt">OpenCORE编译指导[翻译]</a><br />
-	[2010-06-04] <a href="big-or-little-endian.txt">判断cpu是大端还是小端</a><br />
-	[2014-10-09] <a href="travel-srilanka.txt">大斯国行走记 </a><br />
-    [2015-02-08] <a href="install-postgresql-from-source-code.txt">install-postgresql-from-source-code.txt</a><br />
-    [2015-02-08] <a href="virtualbox-linuxmint-modify-resolution.html">Modify Resolution of Guest Linux OS on Virtualbox</a><br />
-	</body>
+        <div id="nickname"">
+            <h2><a href="https://github.com/zergl">@zergl</a></h2>
+            <input type="text" name="emial" value="e3.gemini_at_qq.com" hidden>
+        </div>
+        <br />
+        <div id="posts">
+            [2007-05-08] <a href="_posts/slackware-10.0-chinese-setup.txt">Slackware 10.0中文环境配置详细介绍</a></br />
+            [2010-01-23] <a href="_posts/tcp_close_routine.txt">tcp断开过程</a><br />
+            [2010-04-29] <a href="_posts/build-android-apk-with-ant.txt">使用ant编译android程序</a><br />
+            [2010-06-04] <a href="_posts/how-to-compile-opencore.txt">OpenCORE编译指导[翻译]</a><br />
+            [2010-06-04] <a href="_posts/big-or-little-endian.txt">判断cpu是大端还是小端</a><br />
+            [2014-10-09] <a href="_posts/travel-srilanka.txt">大斯国行走记 </a><br />
+            [2015-02-08] <a href="_posts/install-postgresql-from-source-code.txt">Install PostgreSQL 9.4.1 from Source</a><br />
+            [2015-02-08] <a href="_posts/virtualbox-linuxmint-modify-resolution.html">Modify Resolution of Guest Linux OS on Virtualbox</a><br />
+            [2015-05-09] <a href="_posts/travel-angkorwat-201504.html">四月吴哥</a><span class="text">(in progress)</span><br />
+            [2015-04-19] <a href="_posts/git-skills.txt">常用Git操作</a><span class="text">(in progress)</span><br />
+            [2015-05-09] <a href="_posts/write-uwsgi-app-in-ccpp.html">Write uWsgi Application in C/C++</a><span class="text">(in progress)</span><br />
+            [2015-05-09] <a href="_posts/angulajs-notes.html">AngulaJS Notes</a> <span class="text">(in progress)</span><br />
+            [2015-05-11] <a href="_post/how-to-monitor-processes-under-windows.html">How to Monitor a Process or Service under Windows</a><span class="text"> (in progress)</span><br>
+        </div>
+    </body>
 </html>

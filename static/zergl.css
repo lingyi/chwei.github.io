@@ -1,0 +1,37 @@
+body {
+    width:680px;
+    margin: 2px auto;
+    border:solid 1p#000;
+    background: black;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Courier New, Courier, monospaced;
+}
+
+body, a {
+    color: #0a0;
+}
+
+a {
+    font-weight: bold;
+}
+
+article {
+  height:60%;
+  width:60%;
+}
+
+#faq {
+    color: #aaa;
+}
+
+.text, .answer, .answer a {
+    color: #aaa;
+}
+
+a:link,a:visited {
+    text-decoration:none;
+}
+a:hover {
+    color: #F93;
+    text-decoration:none;
+}
+        
