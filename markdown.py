@@ -667,8 +667,20 @@ class _Markdown:
 
     def _Detab(self, text): return text.expandtabs(self.tabwidth)
 
-def Markdown(*args, **kw): return _Markdown().parse(*args, **kw)
-markdown = Markdown
+def Markdown(*args, **kw): 
+    _body =  _Markdown().parse(*args, **kw)
+    head = '''<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet"  href="../static/zergl.css" type="text/css" media="all" />
+        <script type="text/javascript" src="../static/zergl.js"> </script> 
+    </head>
+    <body>'''
+    end = '''
+    </body>
+</html>'''
+
+    return head + "\n" + _body + "\n"+ end
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
