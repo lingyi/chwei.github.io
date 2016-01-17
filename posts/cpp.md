@@ -130,3 +130,13 @@ http://robinjie.iteye.com/blog/289843
 
 ### 10. 同步和阻塞的理解
 
+### 11. Windows Studio编译生成代码时/MD, /ML, /MT, /LD四个选项的区别
+
+### 12. offsetof定义
+在linux/include中,offset如下定义:
+
+> #define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
+   
+在这里我们实际并没有访问结构成员的内存空间,只是返回其地址值,我们用的是取址运算符.而这里的值是编绎器在编绎阶段便已经计算好的,
+
+### 13.
