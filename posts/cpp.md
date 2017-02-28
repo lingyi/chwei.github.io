@@ -128,15 +128,51 @@ http://robinjie.iteye.com/blog/289843
 
 ### 9. C++多态实现原理、虚表
 
-### 10. 同步和阻塞的理解
+### 10. 同步/异步和阻塞/非阻塞的理解
 
 ### 11. Windows Studio编译生成代码时/MD, /ML, /MT, /LD四个选项的区别
 
 ### 12. offsetof定义
 在linux/include中,offset如下定义:
 
-> #define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
-   
+>  #define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
+  
 在这里我们实际并没有访问结构成员的内存空间,只是返回其地址值,我们用的是取址运算符.而这里的值是编绎器在编绎阶段便已经计算好的,
 
-### 13.
+### 问题13. 从浏览器输入URL开始，到服务器返回给客户端整个过程，请描述这个过程，并尽可能多的列举相关知识点（从面试者角度）
+
+从整体处理流程上看，Browser拼装并发起HTTP请求，Server端解析HTTP协议，处理业务逻辑（中间可能会与别的服务器、DB等后端服务），
+
+- 1. HTTP协议
+
+  	> - 1.1 GET和POST差异（资源、性能、安全等方面）。  
+  	> - 1.2 GET、POST与Restful
+	> - 1.3 POST二次提交问题
+	> - 1.4 XSS/CSRF
+	> - 1.5 ajax -> spa
+	> - 1.6 HTTP与二进制协议
+	> - 1.7 常见二进制协议，比如protobuf
+    
+
+- 2. 服务器
+	> - 1.1 是WebServer+CGI/FastCGI还是Golang这些？模式上有什么区别？
+	> - 1.2 Apache、Nginx进程模型对比
+	> - 1.3 多路复用select/poll/epoll
+	> - 1.4 epoll实现原理
+	> - 1.5 多进程、多线程、协程
+	
+- 3. 系统（负载均衡、容灾、高性能）
+	> - 3.1 B->S、及S与后端服务的负载均衡问题
+	> - 3.2 域名解析原理
+	> - 3.3 四层/七层如何做负载均衡（如果懂可以深聊OSI协议栈）
+	> - 3.4 DB查询慢问题，有什么思路没 -> SQL表定义优化/分库分表/内存数据库/DB Cache
+	> - 3.5 监控系统
+
+- 4. 其他 
+	> - 4.1 websocket协议
+	> - 4.2 秒杀场景如何设计
+	> - 4.3 
+
+### 问题14. CGI连接后端服务器怎么做到容灾和负载均衡？
+
+### 问题15. 
