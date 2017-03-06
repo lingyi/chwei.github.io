@@ -15,16 +15,28 @@ Descriptor字面译“描述符”，官方说明在[这里](https://docs.python
 
 （2）只要对象实现了\_\_get\_\_()/\_\_set\_\_()/\_\_delete\_\_()三个方法中任意一个或多个，则该对象即拥有描述符属性。说白了，这个规则也就是描述符协议（Descriptor Protocol）。
 
+方法原型：
+
+```python
+descr.__get__(self, obj, type=None) --> value
+
+descr.__set__(self, obj, value) --> None
+
+descr.__delete__(self, obj) --> None
+```
+
 （3）同时实现了\_\_get\_\_()和\_\_set\_\_()两个方法的对象，则称为**数据描述符（Data Descriptor）**，仅实现了__get__()方法的描述符成为**非数据描述符**。
 
  （4）定义\_\_get\_\_()和\_\_set\_\_()，并将\_\_set\_\_()直接抛出异常AttributeError，则可定义一个只读数据描述符。
 
 （5）访问“属性”时，搜索（lookup）优先顺序为：对象实例\_\_dict\_\_字典、对象类型（class）\_\_dict\_\_字典，对象类型父类的\_\_dict\_\_字典（不含元类）。
 
-（6）aaa
+（6）简单点理解，描述符拦截了对属性的访问。
 
-```python
-class C(object):
+
+``` python
+
+class Name(object):
 	def __init__(self, name=""):
 		self._name = name
 
@@ -33,6 +45,14 @@ class C(object):
 
 	def __set__(self, name):
 		self._name = name
+
+class Person(object):
+	name = Name("Lucia")
+	
+p = Person("Leo")
+print("name:", p.name)
+p.name = "Lucia"
+print("name:", p.name)
 
 ```
 
