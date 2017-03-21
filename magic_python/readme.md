@@ -22,7 +22,9 @@
 14. [@wrapper]()
 15. [functools.partial]()
 16. [列表解析浅析]()
-17. 
+17. [@staticmethod vs @classmethod]()
+18. [深入Python单例]()
+19. 
 
 
 
