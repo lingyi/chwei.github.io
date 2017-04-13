@@ -4,6 +4,7 @@
 	 更新：2017.04.13
 
 ## 目录
+	 0. 配置
 	 1. 常用命令
 	 2. 分支
 	 3. 补丁的玩法
@@ -11,6 +12,17 @@
 
 接触git几年，仍是新手level，以下笔记备忘，基本涵盖了日常80%的操作。
 
+#### 0 配置
+	git config user.name "ZhangSan" //设置名字，当前项目有效
+	git config user.email "zhangsan@qq.com" //设置邮箱，当前项目有效
+	git config --global user.name "ZhangSang" //设置名字，全局
+	git config --global user.email "zhangsan@qq.com"
+	
+	//git log中文乱码
+	//git status 中文乱码
+	//git diff彩色高亮
+	//git log彩色高亮
+	
 #### 1 常用命令
 
 	git status 查看当前哪些文件修改了，相对于整个工程
