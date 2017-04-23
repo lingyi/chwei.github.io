@@ -34,5 +34,5 @@
 	- 扩展：Python支持（Client侧）
 	- 扩展：Go支持（Client侧）
 
-- 深入:源码走读
+- 深入：源码走读
 	- pendding
